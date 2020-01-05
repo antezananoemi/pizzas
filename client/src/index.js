@@ -1,5 +1,11 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+import "./App.css";
+import { render } from "react-dom";
+import cache from "./utils/cache";
+import getStore from "./bundles";
+import root from "./components/root";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+cache.getAll().then(initialData => {
+  render(root(getStore(initialData)), document.getElementById("root"));
+});
